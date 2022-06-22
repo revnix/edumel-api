@@ -118,6 +118,7 @@ class Edumel_Api {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-edumel-api-admin.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-edumel-api-options-page.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-edumel-ap-cpt.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-edumel-api-texonomies.php';
 
 
 
@@ -182,6 +183,7 @@ class Edumel_Api {
 		$plugin_admin_options_page->activate();
 		$plugin_cpts_init = new Edumel_Api_Cpts();
 		$plugin_cpts_init->activate();
+		$plugin_texonomies = new Edumel_Api_Texonomy();
 
 	
 
