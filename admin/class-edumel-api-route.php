@@ -43,17 +43,33 @@ public function edumal_api_route_init() {
     // options page route
 	register_rest_route( 'edumel/v1','options_page', array(
 	  'methods' => 'GET',
-	  'callback' => [$this, 'edumal_api_options_page'],
+	  'callback' => [$this, 'edumel_api_options_page_cb'],
 	) );
     // Homepage route 
 	register_rest_route( 'edumel/v1','homepage', array(
 		'methods' => 'GET',
-		'callback' => [$this, 'edumal_api_home_page'],
+		'callback' => [$this, 'edumel_api_home_page_cb'],
 	  ) );
+    //Courses  
+    register_rest_route('edumel/v1','coursesList',array(
+        'methods'   => 'GET',
+        'callback'  => [$this, 'edumel_api_coursesList_cb']
+    ));
+    // Courses category
+    register_rest_route('edumel/v1', 'coursesCategory', array(
+        'method'    => 'GET',
+        'callback'  => [$this, 'edumel_api_course_categories_cb']
+    ));
+
+    // instructors
+    register_rest_route('edumel/v1', 'instructors', array(
+        'methods'       => 'GET',
+        'callback'      =>[$this, 'edumel_api_instructors_cb'] 
+    ));
   }
 
 
-function edumal_api_options_page() {
+public function edumel_api_options_page_cb() {
 	$options_page = array(
 		'header_bar'			=> array(
 			'address' => get_field('address', 'option'),
@@ -68,10 +84,24 @@ function edumal_api_options_page() {
 	return $options_page;
 }
 
-function edumal_api_home_page() {
-	$result = get_field('hero_section');
-	return $result;
+public function edumel_api_home_page_cb() {
+	
+	return 'Congraluations';
 }
 
+public function edumel_api_coursesList_cb() {
+
+    return 'Courses list custom route';
+}
+
+public function edumel_api_course_categories_cb() {
+
+    return 'Course categories.!';
+}
+
+public function edumel_api_instructors_cb() {
+
+    return 'This is instructors custom route';
+}
 
 }
