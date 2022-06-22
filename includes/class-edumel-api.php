@@ -78,6 +78,7 @@ class Edumel_Api {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->define_admin_options_page();
 
 	}
 
@@ -115,6 +116,12 @@ class Edumel_Api {
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-edumel-api-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-edumel-api-options-page.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-edumel-ap-cpt.php';
+
+
+
+
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -143,6 +150,8 @@ class Edumel_Api {
 
 	}
 
+
+
 	/**
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
@@ -158,6 +167,26 @@ class Edumel_Api {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
 	}
+
+		/**
+	 * Register options page in the admin area functionality
+	 * of the plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+
+	private function define_admin_options_page() {
+
+		$plugin_admin_options_page = new Edumel_Api_Options_Page();
+		$plugin_admin_options_page->activate();
+		$plugin_cpts_init = new Edumel_Api_Cpts();
+		$plugin_cpts_init->activate();
+
+	
+
+	}
+
 
 	/**
 	 * Register all of the hooks related to the public-facing functionality

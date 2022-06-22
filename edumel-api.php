@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Edumel API
  * Plugin URI:        https://revnix.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       WP REST API endpoint for Edumel 
  * Version:           1.0.0
  * Author:            Sajad Hussain
  * Author URI:        www.sajjadcodes.com
@@ -80,3 +80,6 @@ function run_edumel_api() {
 
 }
 run_edumel_api();
+
+
+
