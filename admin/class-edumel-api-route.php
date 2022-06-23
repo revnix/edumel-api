@@ -41,7 +41,7 @@ public function __construct() {
 
 public function edumal_api_route_init() {
     // options page route
-	register_rest_route( 'edumel/v1','options_page', array(
+	register_rest_route( 'edumel/v1','optionspage', array(
 	  'methods' => 'GET',
 	  'callback' => [$this, 'edumel_api_options_page_cb'],
 	) );
@@ -51,18 +51,18 @@ public function edumal_api_route_init() {
 		'callback' => [$this, 'edumel_api_home_page_cb'],
 	  ) );
     //Courses  
-    register_rest_route('edumel/v1','coursesList',array(
+    register_rest_route('edumel/v1','courseslist',array(
         'methods'   => 'GET',
         'callback'  => [$this, 'edumel_api_coursesList_cb']
     ));
     // Courses category
-    register_rest_route('edumel/v1', 'coursesCategory', array(
+    register_rest_route('edumel/v1', 'coursescategory', array(
         'method'    => 'GET',
         'callback'  => [$this, 'edumel_api_course_categories_cb']
     ));
 
     // instructors
-    register_rest_route('edumel/v1', 'instructors', array(
+    register_rest_route('edumel/v1', 'instructorslist', array(
         'methods'       => 'GET',
         'callback'      =>[$this, 'edumel_api_instructors_cb'] 
     ));
@@ -72,12 +72,14 @@ public function edumal_api_route_init() {
 public function edumel_api_options_page_cb() {
 	$options_page = array(
 		'header_bar'			=> array(
-			'address' => get_field('address', 'option'),
-			'social_icon' => get_field('social_icons', 'option'),
+			'address'		=> get_field('address', 'option'),
+			'social_icon' 	=> get_field('social_icons', 'option'),
 		),
-		'footer'			=> array(
-			'copy_right'		=> 'copyright Text',
-			'developed_by'	=> 'Revnix Technologies'
+		'main_menu'	=> wp_get_nav_menu_items('main_menu'),
+		'footer'				=> array(
+			'copy_right'	=> 'copyright Text',
+			'developed_by'	=> 'Revnix Technologies',
+			'footer_menu'	=> wp_get_nav_menu_items('footer_menu')
 		),
 	);
 
