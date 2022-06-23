@@ -83,3 +83,7 @@ run_edumel_api();
 
 
 
+// $value = get_field('hero_section');
+
+// echo $value; 
+
